@@ -4,7 +4,7 @@ set exrc
 
 "usual things
 set paste
-set rnu
+set number relativenumber
 syntax enable
 set smartindent
 set st=4 sw=4 et
@@ -37,3 +37,14 @@ Plugin 'Vimjas/vim-python-pep8-indent'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+
+
+"LaTeX
+
+Plugin 'lervag/vimtex'
+
+autocmd VimEnter *.tex VimtexCompile 
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
